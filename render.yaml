@@ -1,0 +1,15 @@
+# Render blueprint — deploys the FastAPI backend.
+# Frontend deploys separately to Vercel (see frontend/ and vercel.json).
+services:
+  - type: web
+    name: veritas-backend
+    runtime: python
+    plan: starter
+    buildCommand: pip install -e ".[serve]"
+    startCommand: veritas serve --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: VERITAS_LLM
+        value: mock            # set to anthropic/openai and add the API key to use real models
+      - key: PYTHON_VERSION
+        value: "3.12"

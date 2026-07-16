@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veritas-analyst"
+version = "0.1.0"
+description = "Domain-Specific AI Analyst — multi-agent RAG over documents with hybrid retrieval, RRF, and grounded, cited answers"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Akhil Vase" }]
+keywords = ["rag", "multi-agent", "retrieval", "bm25", "rrf", "llm", "citations", "fastapi", "langgraph"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Intended Audience :: Developers",
+]
+dependencies = []
+
+[project.optional-dependencies]
+serve = ["fastapi>=0.110", "uvicorn[standard]>=0.29", "pydantic>=2.6", "python-multipart>=0.0.9"]
+pdf = ["pypdf>=4.2"]
+openai = ["openai>=1.30"]
+anthropic = ["anthropic>=0.25"]
+vector = ["qdrant-client>=1.8"]
+dev = ["pytest>=8.0", "pytest-cov>=4.1", "ruff>=0.4", "mypy>=1.9"]
+
+[project.urls]
+Homepage = "https://github.com/avase33/veritas-analyst"
+Repository = "https://github.com/avase33/veritas-analyst"
+Issues = "https://github.com/avase33/veritas-analyst/issues"
+
+[project.scripts]
+veritas = "veritas.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["veritas*"]
+
+[tool.setuptools.package-data]
+veritas = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501", "B008"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true

@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Generated
+sample_docs/
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+
+# Env / secrets
+.env
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Local verification helpers
+verify_veritas.py
+verify_tiny.py
+run_veritas_verify.bat
+run_tiny.bat
+run_console.txt
+veritas_verify_output.txt
+veritas_tiny_output.txt
